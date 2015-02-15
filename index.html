@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>International Visitor Arrivals (Singapore)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="International Visitor Arrivals (Singapore)">
+  <meta name="author" content="postalC">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>International Visitor Arrivals (Singapore)</h1>
+    <h2>This application shows the total number of visitor arrivals from the world to Singapore</h2>
+    <p>postalC<br/>Simple Study</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Application Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This application shows the total number of visitor arrivals from the world to <a href="https://www.stb.gov.sg/statistics-and-market-insights/Pages/statistics-visitor-arrivals.aspx">Singapore Info</a> for the range of year(s) selected and their country/region  </p>
+
+<p>The data sources obtained from <a href="http://en.wikipedia.org/wiki/Singapore">Singapore Tourism Board</a>  </p>
+
+<p>International Visitor Arrivals refer to travellers taking a trip to Singapore whose length of stay is less than a year. For more info visit <a href="https://postalc.shinyapps.io/visFull/">Application Site</a>  </p>
+
+<ul>
+<li>All Malaysian citizens arriving by land;<br></li>
+<li>Returning Singapore citizens, permanent residents and pass holders;<br></li>
+<li>Non-resident air and sea crew (except for sea crew flying in to join a ship); and<br></li>
+<li>Air transit and transfer passengers;<br>
+<code>note</code> Arrival statistics are reported by country of residence based on information from Disembarkation/ Embarkation (D/E) Cards by the Immigration and Checkpoints Authority of Singapore.<br></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Structure of Dataset</p>
+
+<pre><code>## &#39;data.frame&#39;:    224 obs. of  4 variables:
+##  $ Country : Ord.factor w/ 56 levels &quot;Canada&quot;&lt;&quot;USA&quot;&lt;..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Region  : Ord.factor w/ 8 levels &quot;AMERICAS&quot;&lt;&quot;ASIA (SouthEast)&quot;&lt;..: 1 1 1 2 2 2 2 2 2 2 ...
+##  $ Year    : Factor w/ 4 levels &quot;2011&quot;,&quot;2012&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...
+##  $ Visitors: num  92.8 484.6 57.5 77.6 3023.1 ...
+</code></pre>
+
+<p>Summary of Visitors Count (in thursands)</p>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     3.6    21.0    56.9   260.0   255.0  3090.0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Graph (Visitor Count by Years)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The plot shows the numbers of traveller visited Singapore from 2011-2014 and thier Country or Residence
+<img src="figures/graph.png" alt="plot of chunk graph"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Map (Countries of Residence)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The map shows the numbers of traveller and thier Country or Residence 
+<img src="figures/map.png" alt="plot of chunk map"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Application Summary'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Data Summary'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Graph (Visitor Count by Years)'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Map (Countries of Residence)'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

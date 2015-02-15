@@ -1,0 +1,92 @@
+---
+title       : International Visitor Arrivals (Singapore)
+subtitle    : This application shows the total number of visitor arrivals from the world to Singapore
+author      : postalC
+job         : Simple Study
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Application Summary
+
+This application shows the total number of visitor arrivals from the world to [Singapore Info](https://www.stb.gov.sg/statistics-and-market-insights/Pages/statistics-visitor-arrivals.aspx) for the range of year(s) selected and their country/region  
+
+The data sources obtained from [Singapore Tourism Board](http://en.wikipedia.org/wiki/Singapore)  
+
+International Visitor Arrivals refer to travellers taking a trip to Singapore whose length of stay is less than a year. For more info visit [Application Site](https://postalc.shinyapps.io/visFull/)  
+* All Malaysian citizens arriving by land;  
+* Returning Singapore citizens, permanent residents and pass holders;  
+* Non-resident air and sea crew (except for sea crew flying in to join a ship); and  
+* Air transit and transfer passengers;  
+`note` Arrival statistics are reported by country of residence based on information from Disembarkation/ Embarkation (D/E) Cards by the Immigration and Checkpoints Authority of Singapore.  
+
+
+--- .class #id 
+
+## Data Summary
+
+```{r dataLoad, echo=FALSE}
+library(ggplot2)
+library(maps)
+## -- Read Visitors Data --
+dataFile <- "./data/iva.csv"
+## -- To avoid delay, the data is preprocessed --
+data <- data.frame(read.csv(dataFile))
+data$Country <- factor(data$Country, levels = unique(data$Country), ordered = TRUE)
+data$Region <- factor(data$Region, levels = unique(data$Region), ordered = TRUE)
+data$Visitors <- data$Visitors/1000
+data$Year <- as.factor(data$Year)
+```
+
+Structure of Dataset
+```{r dataStr, echo=FALSE}
+str(data)
+```
+
+Summary of Visitors Count (in thursands)
+```{r dataSum, echo=FALSE}
+summary(data$Visitors)
+```
+
+--- .class #id 
+
+## Graph (Visitor Count by Years)
+
+The plot shows the numbers of traveller visited Singapore from 2011-2014 and thier Country or Residence
+```{r graph, echo=FALSE, fig.path="figures/", fig.width = 14, fig.height = 6}
+ggplot(data = data, aes(x=Country, y=Visitors)) + 
+    geom_line(aes(colour = Year, group = Year), size = 2) +
+    xlab("Countries (Order by Region") +
+    ylab("Totals Number of Visitor (Thursands)") +
+    ggtitle("Number of travellers visiting Singapore \n and their Country of Residence by Year") +
+    theme(plot.title = element_text(size = 20)) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 1)) 
+```
+
+--- .class #id 
+
+## Map (Countries of Residence)
+The map shows the numbers of traveller and thier Country or Residence 
+```{r map, echo=FALSE, fig.path="figures/", fig.width = 14, fig.height = 7}
+## -- Load Countries Geo Lat/Long data, to avoid delay --
+geoFile <- "./data/latlong.csv"
+geo <- data.frame(read.csv(geoFile))
+## -- Sum the number of visitors --
+sumV <- aggregate(data$Visitors, by=list(Country=data$Country), FUN=sum)
+geo <- merge( geo, sumV, by='Country', all.geo = T, sort=F )
+colnames(geo)[4] <- "Totals"
+geo$Scale <- geo$Totals/(500*length(unique(data$Year)))
+world <- map_data("world")
+ggplot() +
+    geom_polygon(data=world, aes(x=long, y=lat,group=group)) + 
+    geom_point(data=geo,aes(Lon,Lat, colour=Scale),cex = geo$Scale) + 
+    scale_colour_gradient(high = "pink", low = "red") +
+    ggtitle("Total Number of Visitor by Countries") +
+    theme(plot.title = element_text(lineheight=.8, face="bold")) +
+    xlab("Longitude") + 
+    ylab("Latitude")
+```
