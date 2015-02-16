@@ -1,6 +1,6 @@
 ---
 title       : International Visitor Arrivals (Singapore)
-subtitle    : This application shows the total number of visitor arrivals from the world to Singapore
+subtitle    : This application shows the number of travellers taking a trip to Singapore
 author      : postalC
 job         : Simple Study
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -60,9 +60,9 @@ The plot shows the numbers of traveller visited Singapore from 2011-2014 and thi
 ```{r graph, echo=FALSE, fig.path="figures/", fig.width = 14, fig.height = 6}
 ggplot(data = data, aes(x=Country, y=Visitors)) + 
     geom_line(aes(colour = Year, group = Year), size = 2) +
-    xlab("Countries (Order by Region") +
+    xlab("Countries (Order by Region)") +
     ylab("Totals Number of Visitor (Thursands)") +
-    ggtitle("Number of travellers visiting Singapore \n and their Country of Residence by Year") +
+    ggtitle("Number of travellers visited Singapore \n and their Country of Residence by Year") +
     theme(plot.title = element_text(size = 20)) +
     theme(axis.text.x = element_text(angle = 90, vjust = 1)) 
 ```
@@ -70,7 +70,7 @@ ggplot(data = data, aes(x=Country, y=Visitors)) +
 --- .class #id 
 
 ## Map (Countries of Residence)
-The map shows the numbers of traveller and thier Country or Residence 
+The map shows the scale of traveller number and thier Country of Residence 
 ```{r map, echo=FALSE, fig.path="figures/", fig.width = 14, fig.height = 7}
 ## -- Load Countries Geo Lat/Long data, to avoid delay --
 geoFile <- "./data/latlong.csv"
@@ -85,7 +85,7 @@ ggplot() +
     geom_polygon(data=world, aes(x=long, y=lat,group=group)) + 
     geom_point(data=geo,aes(Lon,Lat, colour=Scale),cex = geo$Scale) + 
     scale_colour_gradient(high = "pink", low = "red") +
-    ggtitle("Total Number of Visitor by Countries") +
+    ggtitle("The Scale of Traveller Number by Countries") +
     theme(plot.title = element_text(lineheight=.8, face="bold")) +
     xlab("Longitude") + 
     ylab("Latitude")

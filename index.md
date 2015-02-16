@@ -1,6 +1,6 @@
 ---
 title       : International Visitor Arrivals (Singapore)
-subtitle    : This application shows the total number of visitor arrivals from the world to Singapore
+subtitle    : This application shows the number of travellers taking a trip to Singapore
 author      : postalC
 job         : Simple Study
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -58,5 +58,5 @@ The plot shows the numbers of traveller visited Singapore from 2011-2014 and thi
 --- .class #id 
 
 ## Map (Countries of Residence)
-The map shows the numbers of traveller and thier Country or Residence 
+The map shows the scale of traveller number and thier Country of Residence 
 ![plot of chunk map](figures/map.png) 
